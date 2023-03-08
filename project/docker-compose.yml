@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  django:
+    build: .
+    container_name: django 
+    command: python manage.py runserver 0.0.0.0:8080
+    volumes:
+      - .:/Applications/desktop/docker/test
+    ports:
+      - 8080:8080
+    depends_on:
+      - pgdb
+  pgdb:
+    image: postgres
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    container_name: pgdb
+    volumes:
+      - pgdbdata:/Applications/desktop/docker/test
+
+volumes: 
+  - pgdb: null
