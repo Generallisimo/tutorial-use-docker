@@ -63,3 +63,9 @@ docker-compose up - запуск
 
 вначале заходим в docker login
 docker build -t никнейм/название ./ - так мы создаем образ для залива на docker hub
+
+
+docker-compose run django django-admin startproject dockerfast . для запуска проекта где мы укз к кому обращаемся и какую комнаду выполняем с названием (которое мы даем) и путь куда добавим
+docker up
+docker-compose run django python manage.py migrate - так мы выполняем через обращение к файлу миграции
+docker-compose run django python manage.py createuser - и выполняем создание админа
